@@ -134,6 +134,10 @@ type cardDetails = cardDate & cardNumber & {
   optionalDetails?:[]
 }
 
+// Tuples
+// Tuplees are for predefined and structured ordered data.
+let mainUsers: [string,number,boolean] = ["Prabadhya07",1,false]
+
 // const createNewUser = (user:User) => {
   
 
