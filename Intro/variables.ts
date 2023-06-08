@@ -104,4 +104,39 @@ const logUserDetails = (pt:Person):void => {
 
 logUserDetails(newPerson)
 
+type User = {
+ readonly _id:string
+  name:string,
+  email:string,
+  isActive:boolean,
+  cardDetails?:string
+}
+
+const newUser : User = {
+  _id:"hello",
+  name:"Prabadhya",
+  email:"Hey",
+  isActive:false
+}
+
+newUser.name = "Harshit"
+
+type cardNumber = {
+  cardno:number
+}
+
+type cardDate = {
+  cardDate:number
+}
+
+type cardDetails = cardDate & cardNumber & {
+  cardCVV:number,
+  optionalDetails?:[]
+}
+
+// const createNewUser = (user:User) => {
+  
+
+// }
+
 export {};
