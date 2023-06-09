@@ -143,4 +143,168 @@ let mainUsers: [string,number,boolean] = ["Prabadhya07",1,false]
 
 // }
 
+// Interfaces
+
+interface registeredUser {
+  readonly _id:number,
+  email:string,
+  userId:number,
+  googleId?:string,
+  // startTrial:() => string
+  startTrial():string,
+  getCoupon(couponName:string):number
+
+}
+
+const prabadhya:registeredUser = {
+  _id:421,
+  email:"Prabadhya@gmail.com",
+  userId:123,
+  startTrial:() => {
+    return "Trial Started"
+  },
+  getCoupon:(name:"off10")=> {
+    return 10
+  }
+}
+
+interface Admin extends registeredUser {
+  role:0|1|"admin"
+}
+
+const specialUser: Admin ={
+   _id:421,
+  email:"Prabadhya@gmail.com",
+  userId:123,
+  startTrial:() => {
+    return "Trial Started"
+  },
+  getCoupon:(name:"off10")=> {
+    return 10
+  },
+  role:0
+}
+
+console.log(specialUser.role)
+
+
+// Classes Public and Private
+
+// class UserDetails {
+//   email:string
+//   name:string
+//   private readonly city:string = "Indore"
+//   constructor(email:string,name:string) {
+//     this.email = email
+//     this.name = name
+//   }
+// }
+
+// Getters and Setters
+
+class UserDetails {
+  protected _coursecount = 1
+  private readonly city:string = "Indore"
+  constructor(
+    public email:string,
+    public name:string
+  ) {
+
+  }
+  get getEmail(): string{
+    return `${this.email}@gmail.com`
+  }
+
+  get courseCount():number {
+    return this._coursecount
+  }
+
+  set courseCount(courseNum) {
+    this._coursecount = courseNum
+  } 
+}
+
+class subUser extends UserDetails{
+  isFamily:boolean = true
+  changeCourseCount(num:number) {
+    this._coursecount = num
+  }
+
+}
+
+class TakePhoto {
+  constructor(
+    public cameraMode:string,
+    public filter:string
+    ) {
+
+  }
+}
+
+const newPic = new TakePhoto("Panorama","Black & White")
+
+class Instagram extends TakePhoto {
+
+}
+
+const harshit = new UserDetails("Prabadhya","Harshit");
+
+console.log(harshit.getEmail)
+
+
+// Generics
+
+function identity<Type>(arg:Type):Type {
+  return arg
+}
+
+const helloWorldString = identity<string>("Hello world");
+const newNumber = identity<number>(4)
+
+console.log(helloWorldString,newNumber)
+
+
+function indentityTwo<T>(val:T):T{
+  return val
+}
+
+indentityTwo("Hello")
+
+function getSearchProducts<T>(arg:T[]):T{
+
+  // Do Some Operations
+  const myIndex = 3
+
+  return arg[myIndex]
+}
+
+const getMoreSearchProducts = <T>(arg:T[]):T => {
+  return arg[1]
+}
+
+
+// Generic Classes 
+
+interface Quiz {
+  name:string,
+  type:string
+}
+
+interface Course {
+  name:string,
+  author:string,
+  subject:string
+}
+
+class Sellable<T> {
+  public cart: T[] = [];
+
+  addToCart(products:T) {
+    this.cart.push(products)
+  }
+}
+
+
+
+
 export {};
